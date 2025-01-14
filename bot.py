@@ -20,6 +20,7 @@ def armazenar_reclamacao(mensagem):
 
 @bot.message_handler(commands=["3"])
 def digite3(mensagem):
+    print(mensagem)
     bot.reply_to(mensagem, 'Sessão encerrada')
 
 def verificacao(mensagem):
