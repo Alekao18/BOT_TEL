@@ -8,7 +8,17 @@ bot = telebot.TeleBot(KEY_API)
 
 @bot.message_handler(commands=["1"]) #parametro que gera um comando ou função para a minha função rodar
 def digite1(mensagem):
-    bot.reply_to(mensagem, 'Obrigado por escolher nossa empresa')
+    bot.reply_to(mensagem, 'Obrigado por escolher nossa empresa!')
+    texto = """ 
+    Seja bem vindo ao nosso site!</b>
+    Escolha um de nossos serviços para continuar:
+        /formatacao 
+        /limpeza
+        /instalcaodrivers 
+        /completo
+        /fazerorcamento
+    """
+    bot.send_message(mensagem.chat.id, texto)
 
 @bot.message_handler(commands=["2"])
 def digite2(mensagem):
@@ -16,12 +26,11 @@ def digite2(mensagem):
     bot.register_next_step_handler(reclamacao, armazenar_reclamacao)
 
 def armazenar_reclamacao(mensagem): 
-    bot.reply_to(mensagem, 'Muito obrigado por nos informar, não haverá mais isso')
+    bot.send_message(mensagem.chat.id, 'Muito obrigado por nos informar, não haverá mais isso')
 
 @bot.message_handler(commands=["3"])
 def digite3(mensagem):
-    print(mensagem)
-    bot.reply_to(mensagem, 'Sessão encerrada')
+    bot.send_message(mensagem.chat.id, 'Sessão encerrada')
 
 def verificacao(mensagem):
     return True #bot ira responder a qualquer mensagem
