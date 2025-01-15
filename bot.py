@@ -35,6 +35,26 @@ def armazenar_reclamacao(mensagem):
 def digite3(mensagem):
     bot.send_message(mensagem.chat.id, 'Sessão encerrada')
 
+@bot.message_handler(commands=["formatacao"])
+def formatacao(mensagem):
+    bot.reply_to(mensagem, 'A formatação fica R$50,00')
+
+@bot.message_handler(commands=["limpeza"])
+def limpeza(mensagem):
+    bot.reply_to(mensagem, 'A limpeza fica R$20,00')
+
+@bot.message_handler(commands=["instalacaodrivers"])
+def instalacaodrivers(mensagem):
+    bot.reply_to(mensagem, 'A instalação de drivers fica R$35,00')
+
+@bot.message_handler(commands=["completo"])
+def completo(mensagem):
+    bot.reply_to(mensagem, 'O serviço completo fica R$110,00')
+
+@bot.message_handler(commands=["fazerorcamento"])
+def fazerorcamento(mensagem):
+    bot.reply_to(mensagem, 'Aguarde para fazer o orçamento com um atendente!')
+
 def verificacao(mensagem):
     return True #bot ira responder a qualquer mensagem
 #função que irá verificar se o usuario der inicio com o comando correto
