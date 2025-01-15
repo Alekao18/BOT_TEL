@@ -1,9 +1,12 @@
 import telebot #biblioteca do telegrambot
+from dotenv import load_dotenv
+load_dotenv()
+import os
 
 link_bot = 't.me/Lekaobot_bot.'
-KEY_API = '7642544580:AAFA_KXDWgP7jJukIg7WLiMYnJtQw8NsZMQ' #chave API
+TEL_API = os.getenv('KEY_API') #chave API
 
-bot = telebot.TeleBot(KEY_API)
+bot = telebot.TeleBot(TEL_API)
 #conexão feita com o bot criado no telegram
 
 @bot.message_handler(commands=["1"]) #parametro que gera um comando ou função para a minha função rodar
