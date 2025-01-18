@@ -14,7 +14,7 @@ bot = telebot.TeleBot(TEL_API)
 def digite1(mensagem):
     bot.reply_to(mensagem, 'Obrigado por escolher nossa empresa!')
     texto = """ 
-    Seja bem vindo ao nosso site!</b>
+    Seja bem vindo ao nosso site!
     Escolha um de nossos serviços para continuar:
         /formatacao 
         /limpeza
