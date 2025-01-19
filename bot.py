@@ -1,8 +1,8 @@
-import telebot #biblioteca do telegrambot
+import os
 from dotenv import load_dotenv
 load_dotenv()
-import os
-from main import verificacao, resposta
+
+import telebot #biblioteca do telegrambot
 
 link_bot = 't.me/Lekaobot_bot.'
 TEL_API = os.getenv('KEY_API') #chave API
@@ -56,12 +56,18 @@ def completo(mensagem):
 def fazerorcamento(mensagem):
     bot.reply_to(mensagem, 'Aguarde para fazer o orçamento com um atendente!')
 
-# Importação e registro das funções principais no bot
-# Passando o objeto `bot` para as funções do main.py
-# Registrando funções do main.py
-# Registrando a função principal de verificação e resposta
-@bot.message_handler(func=verificacao)  # verificacao só usa mensagem agora
-def handle_resposta(mensagem):
-    resposta(mensagem, bot)  # Passa o objeto bot para a função resposta
+def verificacao(mensagem):
+    # Aqui você pode implementar qualquer lógica para filtrar mensagens
+    return True  # O bot irá responder a qualquer mensagem
+
+@bot.message_handler(func=verificacao)
+def resposta(mensagem):
+    bot.reply_to(mensagem, 'Olá, eu sou o Leko')  # Usa bot.reply_to corretamente
+    texto = """ 
+     Digite 1 para fazer um pedido
+    Digite 2 para reclamar de um pedido
+    Digite 3 para encerrar
+    """
+    bot.reply_to(mensagem, texto)  # Usa bot.reply_to corretamente
 
 bot.polling() #comando que permite a leitura de todas as mensagens recebidas pelo bot
